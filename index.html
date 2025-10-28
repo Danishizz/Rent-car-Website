@@ -50,39 +50,198 @@
     </nav>
 </header>
 
-<!-- Modal Login -->
-  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content shadow-lg border-primary">
-        <div class="modal-header bg-primary text-white">
-          <h5 class="modal-title" id="loginModalLabel">Login Akun</h5>
-        </div>
-        <div class="modal-body">
-          <form>
-            <!-- Email -->
-            <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" placeholder="Masukkan email anda" required>
+<!-- Login Modal - CENTERING PERFECT -->
+    <div id="loginModal" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, 0.8); z-index: 99999; display: none; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box;">
+        <!-- Modal Container dengan positioning absolut untuk centering sempurna -->
+        <div style="position: relative; width: 800px; max-width: 100%; height: auto; max-height: 90vh; background-color: white; border-radius: 10px; display: flex; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4); transform: translate(-50%, -50%); top: 50%; left: 50%;">
+            <!-- Kiri -->
+            <div style="flex: 1; background: linear-gradient(135deg, #1a2a6c, #2a4d69); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px; color: white; position: relative; min-height: 500px;">
+                <h2 style="font-size: 24px; margin-bottom: 15px; text-align: center; z-index: 1;">Selamat Datang di IDN RentCars!</h2>
+                <p style="font-size: 14px; text-align: center; margin-bottom: 20px; z-index: 1;">Login untuk mengakses akun Anda</p>
+                <i class="fas fa-car" style="font-size: 80px; opacity: 0.8; z-index: 1;"></i>
             </div>
-            <!-- Password -->
-            <div class="mb-3">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password" placeholder="Masukkan password" required>
+            
+            <!-- Kanan -->
+            <div style="flex: 1; padding: 40px; display: flex; flex-direction: column; justify-content: center; position: relative; min-height: 500px;">
+                <!-- Tombol Close dengan z-index tinggi dan positioning yang benar -->
+                <button id="closeModalBtn" type="button" style="position: absolute; top: 15px; right: 15px; font-size: 24px; color: #999; cursor: pointer; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background-color: #f0f0f0; z-index: 100; border: none; user-select: none; transition: all 0.2s ease;">&times;</button>
+                
+                <div style="margin-bottom: 25px;">
+                    <h2 style="font-size: 24px; color: #333; margin-bottom: 10px;">Log In</h2>
+                    <p style="color: #666; font-size: 14px;">Silakan masuk ke akun Anda</p>
+                </div>
+                
+                <form id="loginForm">
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 500; color: #333; font-size: 14px;">Email</label>
+                        <input type="email" id="email" placeholder="Masukkan email Anda" required style="width: 100%; padding: 10px 15px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px; box-sizing: border-box;">
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 500; color: #333; font-size: 14px;">Password</label>
+                        <input type="password" id="password" placeholder="Masukkan password Anda" required style="width: 100%; padding: 10px 15px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px; box-sizing: border-box;">
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; font-size: 14px;">
+                        <div style="display: flex; align-items: center;">
+                            <input type="checkbox" id="remember" style="margin-right: 5px;">
+                            <label for="remember" style="cursor: pointer;">Remember me</label>
+                        </div>
+                        <a href="#" style="color: #4CAF50; text-decoration: none;">Forgot Password?</a>
+                    </div>
+                    
+                    <button type="submit" style="width: 100%; padding: 12px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; font-size: 16px; font-weight: 500; cursor: pointer; margin-bottom: 15px; transition: background-color 0.3s ease;">Login</button>
+                </form>
+                
+                <div style="text-align: center; margin: 15px 0; position: relative;">
+                    <div style="position: absolute; top: 50%; left: 0; width: 100%; height: 1px; background-color: #eee;"></div>
+                    <span style="background-color: white; padding: 0 10px; position: relative; color: #999; font-size: 12px;">Or Login with</span>
+                </div>
+                
+                <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 15px;">
+                    <div style="width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid #eee; cursor: pointer; color: #DB4437; transition: all 0.2s ease;">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <div style="width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid #eee; cursor: pointer; color: #4267B2; transition: all 0.2s ease;">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <div style="width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid #eee; cursor: pointer; color: #333; transition: all 0.2s ease;">
+                        <i class="fab fa-github"></i>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; font-size: 14px; color: #666;">
+                    New user? <a href="#" style="color: #4CAF50; text-decoration: none; font-weight: 500;">Sign up</a>
+                </div>
             </div>
-            <!-- Forgot Password -->
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <a href="#" class="text-primary small">Lupa password?</a>
-            </div>
-            <!-- Tombol Login -->
-            <button type="submit" class="btn btn-primary w-100">Login</button>
-          </form>
         </div>
-        <div class="modal-footer justify-content-center">
-          <p class="mb-0">Belum punya akun? <a href="#" class="text-primary fw-semibold">Daftar</a></p>
-        </div>
-      </div>
     </div>
-  </div>
+
+    <script>
+        // Get elements
+        const modal = document.getElementById('loginModal');
+        const openModalBtn = document.getElementById('openModalBtn');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const loginForm = document.getElementById('loginForm');
+        
+        console.log('Modal:', modal);
+        console.log('Open button:', openModalBtn);
+        console.log('Close button:', closeModalBtn);
+        
+        // Fungsi untuk membuka modal
+        function openModal() {
+            console.log('Opening modal...');
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent background scroll
+            console.log('Modal opened with display:', modal.style.display);
+        }
+        
+        // Fungsi untuk menutup modal dan redirect ke index.html
+        function closeModalAndRedirect() {
+            console.log('Closing modal and redirecting...');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore background scroll
+            
+            // Redirect ke index.html
+            console.log('Redirecting to index.html...');
+            window.location.href = 'index.html';
+        }
+        
+        // Event listener untuk membuka modal
+        if (openModalBtn) {
+            openModalBtn.addEventListener('click', function(e) {
+                console.log('Open button clicked');
+                e.preventDefault();
+                openModal();
+            });
+        } else {
+            console.error('Open button not found');
+        }
+        
+        // Event listener untuk menutup modal dengan tombol X
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', function(e) {
+                console.log('Close button clicked');
+                e.preventDefault();
+                e.stopPropagation(); // Mencegah event bubbling
+                closeModalAndRedirect();
+            });
+            
+            // Visual feedback untuk tombol close
+            closeModalBtn.addEventListener('mouseenter', function() {
+                console.log('Mouse entered close button');
+                this.style.backgroundColor = '#e0e0e0';
+                this.style.color = '#333';
+            });
+            
+            closeModalBtn.addEventListener('mouseleave', function() {
+                this.style.backgroundColor = '#f0f0f0';
+                this.style.color = '#999';
+            });
+        } else {
+            console.error('Close button not found');
+        }
+        
+        // Klik di luar modal untuk menutup dan redirect
+        if (modal) {
+            modal.addEventListener('click', function(e) {
+                console.log('Modal clicked, target:', e.target);
+                if (e.target === modal) {
+                    console.log('Clicked outside modal');
+                    closeModalAndRedirect();
+                }
+            });
+        }
+        
+        // ESC key untuk menutup dan redirect
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.style.display === 'flex') {
+                console.log('ESC key pressed');
+                closeModalAndRedirect();
+            }
+        });
+        
+        // Form submit - login berhasil lalu redirect
+        if (loginForm) {
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Ambil nilai form
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                
+                // Validasi sederhana
+                if (!email || !password) {
+                    alert('Mohon isi email dan password');
+                    return;
+                }
+                
+                // Simulasi login berhasil
+                alert('Login berhasil! Mengarahkan ke dashboard...');
+                
+                // Tutup modal dan redirect
+                closeModalAndRedirect();
+                
+                // Reset form
+                this.reset();
+            });
+        }
+        
+        // Tambahkan hover effects untuk social buttons
+        document.querySelectorAll('.social-login > div').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+                this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+            });
+            
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
+            });
+        });
+        
+        console.log('Script initialized successfully');
+    </script>
 
 <!-- Hero -->
 <section id="home" class="hero-section">
