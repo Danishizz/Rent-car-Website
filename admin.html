@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RentCars - Find, Book and Rent a Car Easily</title>
+  
+  <!-- External Stylesheets -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+<!-- Navbar -->
+<header>
+    <nav class="navbar navbar-expand-lg fixed-top" style="height: 80px;">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/image/logo-idn-rentcar-removebg-preview.png" width="100px" height="100px" alt="">
+                IDN - RentCars
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#cars">Cars</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#form">Rent</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#status">Status</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#testimonials">Testimonials</a>
+                    </li>
+                </ul>
+                <button class="btn btn-signin" href="index.html#loginModal" data-bs-toggle="modal">Sign In</button>
+                <a class="nav-link btn btn-signin ms-2" href="admin.html">Admin</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+  <!-- Main Content -->
+  <div class="container py-5">
+    <h2 class="fw-bold mb-4 text-primary text-center">Daftar Permintaan Peminjaman</h2>
+
+    <div class="table-responsive shadow-sm rounded">
+      <table class="table table-striped align-middle">
+        <thead class="table-primary">
+          <tr>
+            <th>#</th>
+            <th>Nama</th>
+            <th>Email</th>
+            <th>Mobil</th>
+            <th>Tanggal Mulai</th>
+            <th>Tanggal Selesai</th>
+            <th>Status</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="rentalTable">
+          <!-- Data akan dimasukkan lewat JS -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
