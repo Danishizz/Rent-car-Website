@@ -117,132 +117,6 @@
         </div>
     </div>
 
-    <script>
-        // Get elements
-        const modal = document.getElementById('loginModal');
-        const openModalBtn = document.getElementById('openModalBtn');
-        const closeModalBtn = document.getElementById('closeModalBtn');
-        const loginForm = document.getElementById('loginForm');
-        
-        console.log('Modal:', modal);
-        console.log('Open button:', openModalBtn);
-        console.log('Close button:', closeModalBtn);
-        
-        // Fungsi untuk membuka modal
-        function openModal() {
-            console.log('Opening modal...');
-            modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Prevent background scroll
-            console.log('Modal opened with display:', modal.style.display);
-        }
-        
-        // Fungsi untuk menutup modal dan redirect ke index.html
-        function closeModalAndRedirect() {
-            console.log('Closing modal and redirecting...');
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restore background scroll
-            
-            // Redirect ke index.html
-            console.log('Redirecting to index.html...');
-            window.location.href = 'index.html';
-        }
-        
-        // Event listener untuk membuka modal
-        if (openModalBtn) {
-            openModalBtn.addEventListener('click', function(e) {
-                console.log('Open button clicked');
-                e.preventDefault();
-                openModal();
-            });
-        } else {
-            console.error('Open button not found');
-        }
-        
-        // Event listener untuk menutup modal dengan tombol X
-        if (closeModalBtn) {
-            closeModalBtn.addEventListener('click', function(e) {
-                console.log('Close button clicked');
-                e.preventDefault();
-                e.stopPropagation(); // Mencegah event bubbling
-                closeModalAndRedirect();
-            });
-            
-            // Visual feedback untuk tombol close
-            closeModalBtn.addEventListener('mouseenter', function() {
-                console.log('Mouse entered close button');
-                this.style.backgroundColor = '#e0e0e0';
-                this.style.color = '#333';
-            });
-            
-            closeModalBtn.addEventListener('mouseleave', function() {
-                this.style.backgroundColor = '#f0f0f0';
-                this.style.color = '#999';
-            });
-        } else {
-            console.error('Close button not found');
-        }
-        
-        // Klik di luar modal untuk menutup dan redirect
-        if (modal) {
-            modal.addEventListener('click', function(e) {
-                console.log('Modal clicked, target:', e.target);
-                if (e.target === modal) {
-                    console.log('Clicked outside modal');
-                    closeModalAndRedirect();
-                }
-            });
-        }
-        
-        // ESC key untuk menutup dan redirect
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && modal.style.display === 'flex') {
-                console.log('ESC key pressed');
-                closeModalAndRedirect();
-            }
-        });
-        
-        // Form submit - login berhasil lalu redirect
-        if (loginForm) {
-            loginForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Ambil nilai form
-                const email = document.getElementById('email').value;
-                const password = document.getElementById('password').value;
-                
-                // Validasi sederhana
-                if (!email || !password) {
-                    alert('Mohon isi email dan password');
-                    return;
-                }
-                
-                // Simulasi login berhasil
-                alert('Login berhasil! Mengarahkan ke dashboard...');
-                
-                // Tutup modal dan redirect
-                closeModalAndRedirect();
-                
-                // Reset form
-                this.reset();
-            });
-        }
-        
-        // Tambahkan hover effects untuk social buttons
-        document.querySelectorAll('.social-login > div').forEach(btn => {
-            btn.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-3px)';
-                this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
-            });
-            
-            btn.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-                this.style.boxShadow = 'none';
-            });
-        });
-        
-        console.log('Script initialized successfully');
-    </script>
-
 <!-- Hero -->
 <section id="home" class="hero-section">
     <div class="container">
@@ -988,8 +862,132 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         console.log('Script initialized');
-</script>
 
+        // Get elements
+        const modal = document.getElementById('loginModal');
+        const openModalBtn = document.getElementById('openModalBtn');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const loginForm = document.getElementById('loginForm');
+        
+        console.log('Modal:', modal);
+        console.log('Open button:', openModalBtn);
+        console.log('Close button:', closeModalBtn);
+        
+        // Fungsi untuk membuka modal
+        function openModal() {
+            console.log('Opening modal...');
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent background scroll
+            console.log('Modal opened with display:', modal.style.display);
+        }
+        
+        // Fungsi untuk menutup modal dan redirect ke index.html
+        function closeModalAndRedirect() {
+            console.log('Closing modal and redirecting...');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore background scroll
+            
+            // Redirect ke index.html
+            console.log('Redirecting to index.html...');
+            window.location.href = 'index.html';
+        }
+        
+        // Event listener untuk membuka modal
+        if (openModalBtn) {
+            openModalBtn.addEventListener('click', function(e) {
+                console.log('Open button clicked');
+                e.preventDefault();
+                openModal();
+            });
+        } else {
+            console.error('Open button not found');
+        }
+        
+        // Event listener untuk menutup modal dengan tombol X
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', function(e) {
+                console.log('Close button clicked');
+                e.preventDefault();
+                e.stopPropagation(); // Mencegah event bubbling
+                closeModalAndRedirect();
+            });
+            
+            // Visual feedback untuk tombol close
+            closeModalBtn.addEventListener('mouseenter', function() {
+                console.log('Mouse entered close button');
+                this.style.backgroundColor = '#e0e0e0';
+                this.style.color = '#333';
+            });
+            
+            closeModalBtn.addEventListener('mouseleave', function() {
+                this.style.backgroundColor = '#f0f0f0';
+                this.style.color = '#999';
+            });
+        } else {
+            console.error('Close button not found');
+        }
+        
+        // Klik di luar modal untuk menutup dan redirect
+        if (modal) {
+            modal.addEventListener('click', function(e) {
+                console.log('Modal clicked, target:', e.target);
+                if (e.target === modal) {
+                    console.log('Clicked outside modal');
+                    closeModalAndRedirect();
+                }
+            });
+        }
+        
+        // ESC key untuk menutup dan redirect
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.style.display === 'flex') {
+                console.log('ESC key pressed');
+                closeModalAndRedirect();
+            }
+        });
+        
+        // Form submit - login berhasil lalu redirect
+        if (loginForm) {
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Ambil nilai form
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                
+                // Validasi sederhana
+                if (!email || !password) {
+                    alert('Mohon isi email dan password');
+                    return;
+                }
+                
+                // Simulasi login berhasil
+                alert('Login berhasil! Mengarahkan ke dashboard...');
+                
+                // Tutup modal dan redirect
+                closeModalAndRedirect();
+                
+                // Reset form
+                this.reset();
+            });
+        }
+        
+        // Tambahkan hover effects untuk social buttons
+        document.querySelectorAll('.social-login > div').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+                this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+            });
+            
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
+            });
+        });
+        
+        console.log('Script initialized successfully');
+</script>
+<script src="script.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     AOS.init();
