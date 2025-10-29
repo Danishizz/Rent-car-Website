@@ -263,26 +263,6 @@ document.querySelectorAll('.step-card, .car-card, .testimonial-card').forEach(el
 });
 
 // =================================
-// App Download Button Handlers
-// =================================
-document.querySelectorAll('.app-button').forEach(button => {
-    button.addEventListener('click', function (e) {
-        e.preventDefault();
-        const lastSpan = this.querySelector('span:last-child');
-        const platform = lastSpan ? lastSpan.textContent : 'the platform';
-        showNotification(`Redirecting to ${platform}...`, 'info');
-    });
-});
-
-// =================================
-// Sign In Button Handler
-// =================================
-const btnSignin = document.querySelector('.btn-signin');
-if (btnSignin) btnSignin.addEventListener('click', function () {
-    showNotification('Sign in feature coming soon!', 'info');
-});
-
-// =================================
 // Initialize on DOM Load
 // =================================
 document.addEventListener('DOMContentLoaded', function () {
@@ -380,6 +360,21 @@ document.querySelectorAll('.social-login > div').forEach(btn => {
         this.style.transform = 'translateY(0)';
         this.style.boxShadow = 'none';
     });
+});
+
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  if (email === "" || password === "") {
+    alert("Please fill all fields!");
+  } else {
+    alert(`Welcome, ${email}!`);
+    // Di sini kamu bisa arahkan ke halaman admin misalnya:
+    // window.location.href = "admin.html";
+  }
 });
 
 console.log('Script initialized successfully');
